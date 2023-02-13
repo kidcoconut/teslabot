@@ -1,0 +1,12 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "stk-wk14-tesla-sentiment-mckone-regEast"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1wcoxsug34wkb"
+s3_prefix = "stk-wk14-tesla-sentiment-mckone-regEast"
+region = "us-east-1"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+disable_rollback = true
+image_repositories = ["SentimentFunction=387894657935.dkr.ecr.us-east-1.amazonaws.com/stkwk14teslasentimentmckoneregeastc4380f5e/sentimentfunction35d37012repo"]

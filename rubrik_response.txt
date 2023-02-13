@@ -1,0 +1,122 @@
+>>>  Interview Readiness
+Q1:		What are 3 advantages of deploying using Model Serving methods Vs. 
+		deploying on GitHub Pages or HuggingFace for free?
+
+A1:		The advantages to deploying using Model Serving Methods (eg Microservice 
+		Model Serving) include:
+		1.  Model deploy and release is highly flexible
+		2.	Online monitoring and validation can occur per model as part of the	
+			rollout process
+		3.	Predictions can be generated and served in real(/run)-time, and 
+			online
+
+		(addt'l advantages)
+		4.	Serving the model is decoupled seperately from the main application
+			which provides great flexibility for the model serving layer
+		5.	Conversely, the above decoupling grants similar freedom to the 
+			applition layer with respect to technology debt
+		6.	The model serving layer can be scaled as demand dictates and as
+			resources are available and/or required
+
+		
+		Comparatively:
+		- GitHub Pages is intended for hosting live static html5 sites from your repo
+			- it is not intended for commercial use
+			- there are enforced quota and usage limits
+			- it is not intended to act as hosting for api endpoints
+
+		- HuggingFace is intended as a repo for pretrained models, however it does
+			not serve models standalone as part of the Model Serving methodology:
+			- HuggingFace Inference API via Model Hub may be appropriate for 
+				demos only (non commercial)
+			- Otherwise, HuggingFace would be imported/referenced in a hosted 
+				model deployment platform;  eg GCP AI predictions, SageMaker, etc
+			- Lastly, HuggingFace models can be imported/referenced in your own
+				 model server 
+
+
+
+Q2:		What is ML model deployment?
+
+A2:		ML Model Deployment is the process of implementing a fully functional 
+		machine learning model into production where it can respond to requests
+		for predictions on demand
+
+		ML Model Deployment is part of the MLOps lifecycle of deployment,
+		which includes maintenance, monitoring, availability, reliability, 
+		performance, scalability,  and optimization.
+
+		When ML Deployment is designed appropriately, benefits of repeatability,
+		reliability, automation, and ultimately measurable business value is 
+		observed.
+
+
+
+Q3:		What is Causal Inference and How Does It Work?
+
+A3:		Causal Inference is based on a natural human process of rationalizing
+		the world through an observation model of cause and effect.  The 
+		underlying philosophy is by observing the effect, and also understanding
+		the cause, humans may have the ability to influence outcomes towards
+		more desired effects and improve future outcomes, sometimes by adjusting
+		the input behaviours of ourselves and or others (causes).
+		
+		In machine learning, causal inference is the application of statistical 
+		tools which allows for algorithms to 'reason' in similar ways.
+
+		The gold standard for inferring causal effects is randomized controlled 
+		trials (RCTs) or A/B tests.  Traditioanlly in the RCT method, a population
+		is split into two groups.  One is the control where no treatment or change 
+		is introduced.  For the other group, changes are applied (causes), and the
+		effect is measured against the control to determine the effectiveness of
+		the technique.  As long as the two data sets are eqully representative,
+		then the cause and effect will represent a valid change.
+
+		In real life, there are situations where these types of tests cannot be
+		practically performed.  One popular technique to address this is the use
+		of statistics to make causal inferences (ie Judea Pearl) which utilizes 
+		causal graphs, mapping all direct causes and real relationships between
+		variables. 
+
+		Another technique is the potential outcomes framework (Donald Rubin) which
+		does not rely on a causal graph but still makes broad assumptions regarding
+		the data, causes, and relationships. 
+
+		A simplistic example using network performance and the hypothesis that the
+		number of server requests is inversely proportional to the response time of
+		a server.  This domain would define a treatment variable x (binary indicating
+		a high or low number of server requests),  an outcome y (which is the observed 
+		response time of a server), and a covariate z (any other variable that could
+		affect the outcome, eg memory, or disk i/o)
+
+		Propensity score matching looks at the probability of the treatment (x=1) 
+		given a known covariate value (z).  The propensity scores are calculated
+		through a logistic regression model trained on data transformed into 
+		training data x and labels y, where the columns of x include the covariates.
+		The trained model is then used to predict the probability of y=1 for 
+		training data x, ie preicting how likely it is for the server to get high
+		requests given how much memory is used.		
+
+		
+
+Q4:		What is serverless deployment and how its compared with deployment on server?
+
+A4:		Serverless deployment is a cloud native development and deployment model that
+		allows developers to build and run applications without having to directly
+		manage the specifics/details of the underlying OS or hardware.
+
+		For example, when planning for the deployment of a web application, my primary
+		business concerns (above functionality) include availability, reliability, 
+		scalability, and economics.  Serverless deployment allows for a simple
+		configuration of resource minimums, maximums, and scaling parameters through
+		a deployment configuration file (eg. yaml).  The developers focus remains
+		squarely on functionality, and the details of standardization, versioning, 
+		how exactly the server is provisioned, or how it responds to the rising or
+		diminishing user requests is completely abstracted.
+
+		Conversely, if the application if deployed onto a bare-metal or virtual server,
+		the deployment team must take a more active role in the provisioning, 
+		maintenance, and upgrade of the server.  Regardless of the peaks and valleys of
+		demand, the server is for the most part constrained to those resources 
+		initially assigned.
+

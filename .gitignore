@@ -1,3 +1,9 @@
+#--- custom:  proj specific
+sam-installation/
+teslabot/
+teslabot/sam_cli_accessKeys.csv
+aws-sam-cli-linux-x86_64.zip
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
